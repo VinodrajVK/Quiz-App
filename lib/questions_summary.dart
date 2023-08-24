@@ -14,11 +14,12 @@ class QuestionSummary extends StatelessWidget {
         child: Column(
           children: summaryData.map((data) {
             return Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
+                  margin: const EdgeInsets.only(top: 5),
                   height: 30,
                   width: 30,
-                  margin: const EdgeInsets.only(bottom: 75),
                   decoration: BoxDecoration(
                       color: data['user_answer'] == data['correct_answer']
                           ? Colors.lightGreen
@@ -34,10 +35,12 @@ class QuestionSummary extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(
-                  width: 5,
+                  width: 10,
                 ),
                 Expanded(
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         data['question_text'].toString(),
@@ -45,9 +48,7 @@ class QuestionSummary extends StatelessWidget {
                           color: Colors.white,
                           fontSize: 20,
                         ),
-                        textAlign: TextAlign.center,
                       ),
-                      const SizedBox(height: 5),
                       Text(
                         'Your Answer : ${data['user_answer']}',
                         style: GoogleFonts.poppins(
@@ -58,10 +59,13 @@ class QuestionSummary extends StatelessWidget {
                       Text(
                         'Correct Answer : ${data['correct_answer']}',
                         style: GoogleFonts.poppins(
-                          color: Color.fromARGB(255, 179, 251, 11),
+                          color: const Color.fromARGB(255, 179, 251, 11),
                           fontSize: 15,
                         ),
-                      )
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
                     ],
                   ),
                 )
