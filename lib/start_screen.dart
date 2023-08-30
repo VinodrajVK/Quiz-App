@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:quiz_app/data/questions.dart';
 import 'package:quiz_app/styled_text.dart';
 
 class StartQuiz extends StatelessWidget {
@@ -12,21 +14,28 @@ class StartQuiz extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Image.asset(
-          'assets/images/quiz-logo.png',
-          width: 300,
-          color: const Color.fromARGB(158, 255, 255, 255),
+          'assets/images/indian-quiz.png',
+          width: 350,
         ),
         const SizedBox(
-          height: 50,
+          height: 20,
         ),
-        const StyledText(
-          'Learn Flutter the Fun Way!',
+        Text(
+          'The Indian Quiz',
+          style: GoogleFonts.poppins(
+            color: Colors.white,
+            fontSize: 40,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         const SizedBox(
-          height: 40,
+          height: 30,
         ),
         OutlinedButton.icon(
-          onPressed: startq,
+          onPressed: () {
+            questions.shuffle();
+            startq();
+          },
           label: const StyledText(
             'Start Quiz',
           ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:quiz_app/data/questions.dart';
 import 'package:quiz_app/questions_summary.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:quiz_app/select_questions.dart';
 
 class ResultsScreen extends StatelessWidget {
   const ResultsScreen({
@@ -17,8 +18,8 @@ class ResultsScreen extends StatelessWidget {
     for (var i = 0; i < chosenAnswers.length; i++) {
       summary.add({
         'question_index': i,
-        'question_text': questions[i].text,
-        'correct_answer': questions[i].answers[0],
+        'question_text': selectedQuestions[i].text,
+        'correct_answer': selectedQuestions[i].answers[0],
         'user_answer': chosenAnswers[i],
       });
     }
@@ -27,7 +28,7 @@ class ResultsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final numTotalQuestions = questions.length;
+    final numTotalQuestions = selectedQuestions.length;
     final numCorrectQuestions = summaryData
         .where(
           (data) => data['user_answer'] == data['correct_answer'],
